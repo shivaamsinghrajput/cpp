@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculation Practice Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="data-bar">
+        <div class="stat-column">
+            <div class="stat-group" id="totalTestsGroup">
+                <label for="totalTests">Total Tests</label>
+                <input type="number" id="totalTests" value="10" min="1">
+            </div>
+            <div class="stat-group" id="numQuestionsGroup">
+                <label for="numQuestions">Questions/Test</label>
+                <input type="number" id="numQuestions" value="10" min="1">
+            </div>
+        </div>
+
+        <div class="stat-column" id="timingSettingsColumn">
+            <div class="stat-group">
+                <label for="showTime">Show Time (ms)</label>
+                <input type="number" id="showTime" value="1000" min="100" step="100">
+            </div>
+            <div class="stat-group">
+                <label for="blankTime">Blank Time (ms)</label>
+                <input type="number" id="blankTime" value="500" min="50" step="50">
+            </div>
+        </div>
+
+        <div class="stat-column">
+            <div class="stat-group">
+                <label for="minDigits">Min Digits</label>
+                <input type="number" id="minDigits" value="1" min="1" max="5">
+            </div>
+            <div class="stat-group">
+                <label for="maxDigits">Max Digits</label>
+                <input type="number" id="maxDigits" value="3" min="1" max="5">
+            </div>
+        </div>
+
+        <div class="stat-column hidden" id="testProgressGroup">
+            <div class="stat-group">
+                <label>Completed:</label>
+                <span id="testsCompletedDisplay" class="neutral-text">0/10</span>
+            </div>
+            <div class="stat-group">
+                <label>Correct: <span id="testsCorrectDisplay" class="correct-text">0</span></label>
+                <label class="fail-label">Failed: <span id="testsFailedDisplay" class="fail-text">0</span></label>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <h1>Calculation Practice Portal</h1>
+        
+        <div class="controls">
+            <select id="testType" class="test-selector">
+                <option value="flash-add">Flash Addition Only</option>
+                <option value="flash-add-sub">Flash Addition/Subtraction</option>
+                <option value="multiplication">Multiplication Practice</option>
+            </select>
+            
+            <button id="themeToggle" class="theme-btn">🌙 Dark</button>
+            <button id="startBtn" class="primary-btn">Start Practice</button>
+            
+            <button id="cancelBtn" class="cancel-btn hidden">Cancel Current Test</button>
+            <button id="endSessionBtn" class="cancel-btn hidden">End Session</button>
+            
+            <button id="nextTestBtn" class="next-btn hidden">Next Test</button>
+        </div>
+
+        <div class="display-area">
+            <div id="numberDisplay" class="number-display">Ready?</div>
+
+            <div id="answerArea" class="answer-area hidden">
+                <div class="input-wrapper">
+                    <span id="questionPrefix" class="question-prefix hidden"></span>
+                    <span id="equationPrefix" class="equation-prefix hidden"></span>
+                    <input type="number" id="userAnswer" placeholder="ans..." autocomplete="off">
+                </div>
+                <button id="submitBtn" class="primary-btn">Submit</button>
+            </div>
+            
+            <div id="resultMessage" class="result-message"></div>
+        </div>
+    </main>
+
+    <script src="backend.js"></script>
+</body>
+</html>
